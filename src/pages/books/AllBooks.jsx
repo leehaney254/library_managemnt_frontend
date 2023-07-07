@@ -6,7 +6,7 @@ const AllBooks = () => {
     <main className="flex relative">
       <Navbar />
       <div className="main_content">
-        <MainCard />
+        <MainCard text="Add a book" button="Create book" />
       </div>
     </main>
   )
