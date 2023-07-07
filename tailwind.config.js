@@ -9,6 +9,7 @@ export default {
       colors: {
         'indigo': '#330099',
         'light-indigo': '#5a009c',
+        'azure': '#007FFF'
       },
     },
   },

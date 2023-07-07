@@ -6,5 +6,7 @@
 .main_content {
   width: 100%;
   margin-left: 200px;
-  background-color: #fff;
+  background-color: #FFF;
+  padding: 2rem;
+  height: 100vh;
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './mainCard.css'
 
 const MainCard = () => {
   return (
-    <aside className="bg-indigo w-3/4">
+    <aside className="bg-indigo maincard">
       <div>
-        <p>Add a book</p>
-        <Link to='/books/create'>Create book</Link>
+        <p className="text-4xl mb-4">Add a book</p>
+        <Link className="mainbutton" to='/books/create'>Create book</Link>
       </div>
       <div></div>
     </aside>
