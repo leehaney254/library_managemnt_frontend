@@ -1,10 +1,13 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar';
+import MainCard from '../../components/maincard/MainCard';
 const AllBooks = () => {
   return (
-    <main>
+    <main >
       <Navbar />
-      <div>AllBooks</div>
+      <div>
+        <MainCard />
+      </div>
     </main>
   )
 }

@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from '../../components/navbar/Navbar'
 
 const AllMembers = () => {
   return (
-    <div>AllMembers</div>
+    <main >
+      <Navbar />
+      <div>AllMembers</div>
+    </main>
   )
 }
 

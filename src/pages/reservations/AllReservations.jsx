@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../../components/navbar/Navbar';
 
 const AllReservations = () => {
   return (
-    <div>AllReservations</div>
+    <main>
+      <Navbar />
+      <div>AllReservations</div>
+    </main>
   )
 }
 

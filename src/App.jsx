@@ -17,8 +17,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<AllBooks />} />
-          <Route path='/' element={<AllMembers />} />
-          <Route path='/' element={<AllReservations />} />
+          <Route path='/members' element={<AllMembers />} />
+          <Route path='/reservations' element={<AllReservations />} />
         </Routes>
       </BrowserRouter>
     </Suspense>
