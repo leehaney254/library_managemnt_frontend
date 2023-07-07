@@ -10,3 +10,8 @@
   padding: 2rem;
   height: 100vh;
 }
+
+.all_inputs:focus {
+  border: solid #330099 2px;
+  outline: #330099;
+}
