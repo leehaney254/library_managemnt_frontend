@@ -1,3 +1,10 @@
 .mainBackgroung {
   background-color: #F5F5F5;
+  /* background-color: #f3f5f9; */
+}
+
+.main_content {
+  width: 100%;
+  margin-left: 200px;
+  background-color: #fff;
 }

@@ -42,15 +42,15 @@ const socialMedia = [
 
 const Navbar = () => {
   return (
-    <nav className="w-44 borderRight">
+    <nav className="borderRight">
       <div className="flex justify-center items-center">
-        <p>Hi admin!</p>
+        <h1 className="heading">Hi Admin!</h1>
       </div>
       <ul className="flex flex-col gap-3">
         {
           navigationLinks.map((item, index) => {
             return (
-              <li key={index}>
+              <li className="linkList" key={index}>
                 <NavLink to={item.link} className="flex gap-2">
                   <item.icon className="text-2xl text-light-indigo" />
                   {item.name}
@@ -60,11 +60,11 @@ const Navbar = () => {
           })
         }
       </ul>
-      <div className="flex gap-3 justify-center">
+      <div className="socialmedia">
         {
           socialMedia.map((item, index) => {
             return (
-              <Link to={item.link} key={index}>
+              <Link className="text-xl" to={item.link} key={index}>
                 <item.icon />
               </Link>
             )

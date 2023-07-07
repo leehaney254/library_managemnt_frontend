@@ -5,7 +5,9 @@ const AllMembers = () => {
   return (
     <main >
       <Navbar />
-      <div>AllMembers</div>
+      <div className="main_content">
+        <div>AllMembers</div>
+      </div>
     </main>
   )
 }

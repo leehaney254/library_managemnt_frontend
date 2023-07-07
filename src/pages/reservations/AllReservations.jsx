@@ -5,7 +5,9 @@ const AllReservations = () => {
   return (
     <main>
       <Navbar />
-      <div>AllReservations</div>
+      <div className="main_content">
+        All reservations
+      </div>
     </main>
   )
 }

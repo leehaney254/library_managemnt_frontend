@@ -3,9 +3,9 @@ import Navbar from '../../components/navbar/Navbar';
 import MainCard from '../../components/maincard/MainCard';
 const AllBooks = () => {
   return (
-    <main >
+    <main className="flex relative">
       <Navbar />
-      <div>
+      <div className="main_content">
         <MainCard />
       </div>
     </main>
