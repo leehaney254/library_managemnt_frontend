@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Card = ({ image, item1, item1Val, item2, item2Val, item2Val1 }) => {
   return (
     <div className="w-40">
-      <img className="w-40" src={image} alt="image" />
+      <img className="w-40 h-52 object-cover" src={image} alt="image" />
       <div className="mainBackgroung">
         <p><span className="font-bold">{item1}:</span> <span>{item1Val}</span></p>
         <p><span className="font-bold">{item2}:</span> <span>{item2Val ? item2Val : item2Val1}</span></p>
