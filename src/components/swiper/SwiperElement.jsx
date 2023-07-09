@@ -4,57 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const books_data = [
-  {
-    title: 'The 48 Laws of power',
-    author: 'Robert Greene', 'genre': 'Personal Growth',
-    publisher: 'Penguine Books', 'publication_date': '12/05/2004',
-    description: 'A very good book',
-    image: 'https://miro.medium.com/v2/resize:fit:588/1*f0znhTHMsMTsq9q-m14VIg.jpeg',
-    amount: 10,
-  },
-  {
-    title: 'Art of Seduction', 'author': 'Robert Greene',
-    genre: 'Personal Growth', 'publisher': 'Penguine Books',
-    publication_date: '12/05/2004', 'description': 'A very good book',
-    image: 'https://nuriakenya.com/wp-content/uploads/2021/01/The-Art-of-Seduction-NuriaKenya-1-600x750.png',
-    amount: 1,
-  },
-  {
-    title: 'Who moved my cheese', 'author': 'Spencer Johnson',
-    genre: 'Personal Growth', 'publisher': 'Penguine Books',
-    publication_date: '8/09/1998',
-    description: 'Who Moved My Cheese? is a simple parable that reveals profound truths. It is an amusing and enlightening story of four characters who live in a \'Maze\' and look for \'Cheese\' to nourish them and make them happy.',
-    image: 'https://skygarden.azureedge.net/media/products/1252785-df66b5b291b94f819198265f9abffa0f.jpg',
-    amount: 5,
-  },
-  {
-    title: 'The 48 Laws of power',
-    author: 'Robert Greene', 'genre': 'Personal Growth',
-    publisher: 'Penguine Books', 'publication_date': '12/05/2004',
-    description: 'A very good book',
-    image: 'https://miro.medium.com/v2/resize:fit:588/1*f0znhTHMsMTsq9q-m14VIg.jpeg',
-    amount: 10,
-  },
-  {
-    title: 'Art of Seduction', 'author': 'Robert Greene',
-    genre: 'Personal Growth', 'publisher': 'Penguine Books',
-    publication_date: '12/05/2004', 'description': 'A very good book',
-    image: 'https://nuriakenya.com/wp-content/uploads/2021/01/The-Art-of-Seduction-NuriaKenya-1-600x750.png',
-    amount: 1,
-  },
-  {
-    title: 'Who moved my cheese', 'author': 'Spencer Johnson',
-    genre: 'Personal Growth', 'publisher': 'Penguine Books',
-    publication_date: '8/09/1998',
-    description: 'Who Moved My Cheese? is a simple parable that reveals profound truths. It is an amusing and enlightening story of four characters who live in a \'Maze\' and look for \'Cheese\' to nourish them and make them happy.',
-    image: 'https://skygarden.azureedge.net/media/products/1252785-df66b5b291b94f819198265f9abffa0f.jpg',
-    amount: 5,
-  },
-]
-
-const SwiperElement = () => {
+const SwiperElement = ({ slider_data }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -92,9 +44,9 @@ const SwiperElement = () => {
     <div>
       <Slider {...settings}>
         {
-          books_data.map((item, index) => {
+          slider_data.books && slider_data.books.map((item, index) => {
             return (
-              <Link to='#' key={index}>
+              <Link to={`/books/${index}`} key={index}>
                 <Card
                   image={item.image}
                   item1="Title"
@@ -106,9 +58,28 @@ const SwiperElement = () => {
             )
           })
         }
+        {
+          slider_data.members && slider_data.members.map((item, index) => {
+            return (
+              <Link to={`/members/${index}`} key={index}>
+                <Card
+                  image={item.image}
+                  item1="Name"
+                  item1Val={item.name}
+                  item2="Debt"
+                  item2Val1={item.debt}
+                />
+              </Link>
+            )
+          })
+        }
       </Slider>
     </div >
   )
+}
+
+SwiperElement.propTypes = {
+  slider_data: PropTypes.array.isRequired,
 }
 
 export default SwiperElement

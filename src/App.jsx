@@ -6,6 +6,7 @@ import Loader from './components/loader/Loader';
 const AllBooks = lazy(() => import('./pages/books/AllBooks'));
 const AllMembers = lazy(() => import('./pages/members/AllMembers'));
 const AllReservations = lazy(() => import('./pages/reservations/AllReservations'));
+const BookInfo = lazy(() => import('./pages/books/BookInfo'))
 
 import './App.css'
 
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<AllBooks />} />
+          <Route path='/books/:id' element={<BookInfo />} />
           <Route path='/members' element={<AllMembers />} />
           <Route path='/reservations' element={<AllReservations />} />
         </Routes>
