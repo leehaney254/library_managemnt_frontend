@@ -86,7 +86,7 @@ const CreateMember = () => {
               className="all_inputs"
             />
           </div>
-          <button type="submit" className="bg-azure p-2 mt-4 rounded-md">Create</button>
+          <button type="submit" className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
         </form>
       </div>
     </main>
