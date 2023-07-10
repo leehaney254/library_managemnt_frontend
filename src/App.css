@@ -4,14 +4,34 @@
 }
 
 .main_content {
-  width: 100%;
+  width: 87%;
   margin-left: 200px;
   background-color: #FFF;
   padding: 2rem;
   height: 100vh;
 }
 
-.all_inputs:focus {
+.all_inputs {
   border: solid #330099 2px;
-  outline: #330099;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.all_inputs:focus {
+  border: solid #007FFF 2px;
+  outline: #007FFF;
+}
+
+.button_update {
+  padding: 0.5rem;
+  background-color: #007FFF;
+  color: #FFF;
+  border-radius: 10px;
+}
+
+.button_delete {
+  padding: 0.5rem;
+  background-color: red;
+  color: #FFF;
+  border-radius: 10px;
 }

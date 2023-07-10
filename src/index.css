@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300&family=Poppins&family=Roboto+Slab&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300&family=Poppins&family=Roboto+Slab&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
