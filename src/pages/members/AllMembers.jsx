@@ -31,7 +31,7 @@ const members_data = {
 
 const AllMembers = () => {
   return (
-    <main >
+    <main className="flex relative">
       <Navbar />
       <div className="main_content">
         <MainCard text="Add a Member" button="Create member" links="/members/create" />

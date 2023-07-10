@@ -23,7 +23,7 @@ const BookInfo = () => {
               </div>
               <div className="flex justify-center">
                 <p><span className="font-bold">Title:</span> Personal Growth</p>
-                <p>Cost: 50</p>
+                <p><span className="font-bold">Cost:</span> 50</p>
               </div>
             </div>
             <p className="text-center">
