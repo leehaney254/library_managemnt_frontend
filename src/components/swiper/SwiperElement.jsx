@@ -94,7 +94,7 @@ const SwiperElement = ({ slider_data }) => {
 }
 
 SwiperElement.propTypes = {
-  slider_data: PropTypes.array.isRequired,
+  slider_data: PropTypes.object.isRequired,
 }
 
 export default SwiperElement
