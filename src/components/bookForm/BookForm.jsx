@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import bookSchema from '../../validations/bookValidation';
 import { createBookAction } from '../../features/books/books';
 
-const BookForm = () => {
+const BookForm = ({ book_data }) => {
 
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const BookForm = () => {
 
   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      amount: 0,
+      amount: "",
       author: "",
       description: "",
       genre: "",
@@ -25,7 +25,7 @@ const BookForm = () => {
       title: "",
     },
     validationSchema: bookSchema,
-    onSubmit: onSubmit,
+    onSubmit,
   })
 
   return (
@@ -41,6 +41,7 @@ const BookForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.title && touched.title ? "input_error" : "all_inputs"}
+            placeholder="Book title"
             required
           />
           {errors.title && touched.title && <p className="error_text">{errors.title}</p>}
@@ -55,6 +56,7 @@ const BookForm = () => {
             value={values.genre}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="Book genre"
             required
           />
           {errors.genre && touched.genre && <p className="error_text">{errors.genre}</p>}
@@ -71,6 +73,7 @@ const BookForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.author && touched.author ? "input_error" : "all_inputs"}
+            placeholder="Authors name"
             required
           />
           {errors.author && touched.author && <p className="error_text">{errors.author}</p>}
@@ -85,6 +88,7 @@ const BookForm = () => {
             value={values.publisher}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="Book Publisher"
             required
           />
           {errors.publisher && touched.publisher && <p className="error_text">{errors.publisher}</p>}
@@ -101,6 +105,7 @@ const BookForm = () => {
             value={values.publication_date}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="Publication Date"
             required
           />
           {errors.publication_date && touched.publication_date && <p className="error_text">{errors.publication_date}</p>}
@@ -115,6 +120,7 @@ const BookForm = () => {
             value={values.amount}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="0"
             required
           />
           {errors.amount && touched.amount && <p className="error_text">{errors.amount}</p>}
@@ -131,6 +137,7 @@ const BookForm = () => {
             value={values.image}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="http://example.com"
             required
           />
           {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
@@ -144,6 +151,7 @@ const BookForm = () => {
             value={values.description}
             onChange={handleChange}
             onBlur={handleBlur}
+            placeholder="What is the book about"
             required
           />
           {errors.description && touched.description && <p className="error_text">{errors.description}</p>}
