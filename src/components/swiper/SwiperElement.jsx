@@ -59,9 +59,9 @@ const SwiperElement = ({ slider_data }) => {
           })
         }
         {
-          slider_data.members && slider_data.members.map((item, index) => {
+          slider_data.members && slider_data.members.map((item) => {
             return (
-              <Link to={`/members/${index}`} key={index}>
+              <Link to={`/members/${item.id}`} key={item.id}>
                 <Card
                   image={item.image}
                   item1="Name"
