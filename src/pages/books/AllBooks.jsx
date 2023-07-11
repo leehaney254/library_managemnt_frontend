@@ -7,7 +7,8 @@ import SwiperElement from '../../components/swiper/SwiperElement';
 
 const AllBooks = () => {
   const dispatch = useDispatch();
-  const books_data = useSelector((state) => state.books.payload);
+
+  let books_data = useSelector((state) => state.books.books);
 
   useEffect(() => {
     //request for all books from backend
@@ -24,7 +25,8 @@ const AllBooks = () => {
           <input type="text" placeholder="Find by Author" className="all_inputs" />
         </div>
         <div>
-          <SwiperElement slider_data={books_data} />
+          {/* We only display when there is data from backend */}
+          {books_data && <SwiperElement slider_data={books_data} />}
         </div>
       </div>
     </main>

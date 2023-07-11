@@ -7,49 +7,49 @@ const initialState = {
   error: '',
 };
 
-// Used to fetch all books
-const fetchBooks = createAsyncThunk('books/fetchBooks', () => fetch(`${url}/books`)
+// Used to fetch all members
+const fetchMembers = createAsyncThunk('books/fetchMembers', () => fetch(`${url}/members`)
   .then((res) => res.json())
   .then((data) => data));
 
-//used to fetch a single book
-const fetchBook = createAsyncThunk('books/fetchBook', (id) => fetch(`${url}/books/${id}`)
+//used to fetch a single member
+const fetchMember = createAsyncThunk('books/fetchMember', (id) => fetch(`${url}/members/${id}`)
   .then((res) => res.json())
   .then((data) => data));
 
-const booksSlice = createSlice({
-  name: 'books',
+const membersSlice = createSlice({
+  name: 'members',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBooks.pending, (state) => ({
+      .addCase(fetchMembers.pending, (state) => ({
         ...state,
         loading: true,
       }))
-      .addCase(fetchBooks.fulfilled, (state, action) => ({
+      .addCase(fetchMembers.fulfilled, (state, action) => ({
         ...state,
         loading: false,
-        books: action.payload,
+        members: action.payload,
         error: '',
       }))
-      .addCase(fetchBooks.rejected, (state, action) => ({
+      .addCase(fetchMembers.rejected, (state, action) => ({
         ...state,
         loading: false,
-        books: [],
+        members: [],
         error: action.error.message,
       }))
-      .addCase(fetchBook.pending, (state) => ({
+      .addCase(fetchMember.pending, (state) => ({
         ...state,
         loading: true,
       }))
-      .addCase(fetchBook.fulfilled, (state, action) => ({
+      .addCase(fetchMember.fulfilled, (state, action) => ({
         ...state,
         loading: false,
         payload: action.payload,
         error: '',
       }))
-      .addCase(fetchBook.rejected, (state, action) => ({
+      .addCase(fetchMember.rejected, (state, action) => ({
         ...state,
         loading: false,
         payload: null,
@@ -58,5 +58,5 @@ const booksSlice = createSlice({
   },
 });
 
-export default booksSlice.reducer;
-export { fetchBooks, fetchBook };
+export default membersSlice.reducer;
+export { fetchMembers, fetchMember };
