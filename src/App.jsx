@@ -11,6 +11,8 @@ const MambersInfo = lazy(() => import('./pages/members/MambersInfo'));
 const CreateBook = lazy(() => import('./pages/books/CreateBook'));
 const CreateMember = lazy(() => import('./pages/members/CreateMember'));
 const CreateReservation = lazy(() => import('./pages/reservations/CreateReservation'));
+const UpdateBook = lazy(() => import('./pages/books/UpdateBook'));
+const UpdateMember = lazy(() => import('./pages/members/UpdateMember'));
 
 import './App.css'
 
@@ -24,9 +26,11 @@ function App() {
           <Route path='/' element={<AllBooks />} />
           <Route path='/books/create' element={<CreateBook />} />
           <Route path='/books/:id' element={<BookInfo />} />
+          <Route path='/books/update/:id' element={<UpdateBook />} />
           <Route path='/members' element={<AllMembers />} />
           <Route path='/members/create' element={<CreateMember />} />
           <Route path='/members/:id' element={<MambersInfo />} />
+          <Route path='/members/update/:id' element={<UpdateMember />} />
           <Route path='/reservations' element={<AllReservations />} />
           <Route path='/reservations/create' element={<CreateReservation />} />
           <Route path='/reservations/:id' element={<BookInfo />} />

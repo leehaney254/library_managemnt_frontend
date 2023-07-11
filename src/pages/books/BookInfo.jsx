@@ -47,11 +47,11 @@ const BookInfo = () => {
           </div>
         }
         <div className='flex justify-end gap-4'>
-          <Link to="#" className="button_update">Update</Link>
+          <Link to={`/books/update/${id}`} className="button_update">Update</Link>
           <Link to="#" className="button_delete">Delete</Link>
         </div>
       </aside>
-    </main>
+    </main >
   )
 }
 
