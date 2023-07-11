@@ -1,27 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux';
+import memberSchema from '../../validations/memberValidation';
+import { useFormik } from 'formik';
+import { createMemberAction } from '../../features/members/members';
 import Navbar from '../../components/navbar/Navbar'
 
 const CreateMember = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [debt, setDebt] = useState(0);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [image, setImage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
 
-    // Perform desired action with form data
-    // For example, submit the form to a server or update state
+  const onSubmit = (values, actions) => {
+    dispatch(createMemberAction(values));
+    actions.resetForm();
+  }
 
-    // Reset the form
-    setName('');
-    setEmail('');
-    setDebt(0);
-    setPhoneNumber('');
-    setImage('');
-  };
-
+  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      debt: 0,
+      phone_number: "",
+      image: "",
+    },
+    validationSchema: memberSchema,
+    onSubmit: onSubmit,
+  })
   return (
     <main className="flex relative">
       <Navbar />
@@ -33,22 +36,28 @@ const CreateMember = () => {
               <input
                 type="text"
                 id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 name='name'
-                className="all_inputs"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.name && touched.name ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.name && touched.name && <p className="error_text">{errors.name}</p>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="email">Email:</label>
               <input
                 type="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 name='email'
-                className="all_inputs"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.email && touched.email ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.email && touched.email && <p className="error_text">{errors.email}</p>}
             </div>
           </div>
           <div className="flex justify-between my-4">
@@ -57,22 +66,28 @@ const CreateMember = () => {
               <input
                 type="number"
                 id="debt"
-                value={debt}
-                onChange={(e) => setDebt(Number(e.target.value))}
                 name='debt'
-                className="all_inputs"
+                value={values.debt}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="phoneNumber">Phone Number:</label>
               <input
-                type="text"
+                type="tel"
                 id="phoneNumber"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
                 name='phone_number'
-                className="all_inputs"
+                value={values.phone_number}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.phone_number && touched.phone_number ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.phone_number && touched.phone_number && <p className="error_text">{errors.phone_number}</p>}
             </div>
           </div>
           <div className="flex flex-col">
@@ -80,13 +95,16 @@ const CreateMember = () => {
             <input
               type="text"
               id="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
               name='image'
-              className="all_inputs"
+              value={values.image}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.image && touched.image ? "input_error" : "all_inputs"}
+              required
             />
+            {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
           </div>
-          <button type="submit" className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
         </form>
       </div>
     </main>

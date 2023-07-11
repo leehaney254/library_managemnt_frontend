@@ -14,7 +14,7 @@ const CreateBook = () => {
     actions.resetForm();
   }
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       amount: 0,
       author: "",
@@ -154,7 +154,7 @@ const CreateBook = () => {
             </div>
           </div>
 
-          <button type="submit" className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
         </form>
       </div>
     </main >

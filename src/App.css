@@ -51,3 +51,7 @@
   color: #fc8181;
   font-size: small;
 }
+
+button:disabled {
+  opacity: 0.35;
+}

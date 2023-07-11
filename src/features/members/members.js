@@ -17,6 +17,22 @@ const fetchMember = createAsyncThunk('books/fetchMember', (id) => fetch(`${url}/
   .then((res) => res.json())
   .then((data) => data));
 
+//used to create a member
+const createMemberAction = createAsyncThunk('books/fetchMember', (values) => fetch(`${url}/members`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+})
+  .then(response => {
+    if (response.ok) {
+      console.log('Member created successfully');
+    } else {
+      console.log('Error creating member');
+    }
+  }))
+
 const membersSlice = createSlice({
   name: 'members',
   initialState,
@@ -59,4 +75,4 @@ const membersSlice = createSlice({
 });
 
 export default membersSlice.reducer;
-export { fetchMembers, fetchMember };
+export { fetchMembers, fetchMember, createMemberAction };

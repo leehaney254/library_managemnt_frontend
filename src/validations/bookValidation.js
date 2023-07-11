@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const bookSchema = yup.object().shape({
-  amount: yup.number().positive().integer('Please enter integers').required('Age is requied'),
+  amount: yup.number().positive().integer('Please enter integers').required('Amount is requied'),
   author: yup.string().required('Author is required'),
   description: yup.string().required('Description is required'),
   genre: yup.string().required('genre is required'),
