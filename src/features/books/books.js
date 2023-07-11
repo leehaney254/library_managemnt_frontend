@@ -17,6 +17,22 @@ const fetchBook = createAsyncThunk('books/fetchBook', (id) => fetch(`${url}/book
   .then((res) => res.json())
   .then((data) => data));
 
+//used to fetch a single book
+const createBookAction = createAsyncThunk('books/createBook', (values) => fetch(`${url}/books`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+})
+  .then(response => {
+    if (response.ok) {
+      console.log('Book created successfully');
+    } else {
+      console.log('Error creating book');
+    }
+  }))
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -59,4 +75,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export { fetchBooks, fetchBook };
+export { fetchBooks, fetchBook, createBookAction };

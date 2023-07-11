@@ -1,12 +1,17 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import Navbar from '../../components/navbar/Navbar';
 import bookSchema from '../../validations/bookValidation';
+import { createBookAction } from '../../features/books/books';
 
 const CreateBook = () => {
 
-  const onSubmit = () => {
-    console.log("Submitted");
+  const dispatch = useDispatch();
+
+  const onSubmit = (values, actions) => {
+    dispatch(createBookAction(values));
+    actions.resetForm();
   }
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -21,10 +26,9 @@ const CreateBook = () => {
       title: "",
     },
     validationSchema: bookSchema,
-    onSubmit,
+    onSubmit: onSubmit,
   })
 
-  console.log(errors)
   return (
     <main className="flex relative">
       <Navbar />
@@ -58,6 +62,36 @@ const CreateBook = () => {
                 required
               />
               {errors.genre && touched.genre && <p className="error_text">{errors.genre}</p>}
+            </div>
+          </div>
+          <div className="flex justify-between my-4">
+            <div className="flex flex-col">
+              <label htmlFor="author">Author:</label>
+              <input
+                type="text"
+                id="author"
+                name='author'
+                value={values.author}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.author && touched.author ? "input_error" : "all_inputs"}
+                required
+              />
+              {errors.author && touched.author && <p className="error_text">{errors.author}</p>}
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="publisher">Publisher:</label>
+              <input
+                type="text"
+                id="publisher"
+                name='publisher'
+                className={errors.publisher && touched.publisher ? "input_error" : "all_inputs"}
+                value={values.publisher}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
+              />
+              {errors.publisher && touched.publisher && <p className="error_text">{errors.publisher}</p>}
             </div>
           </div>
           <div className="flex justify-between my-4">
