@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
 import Navbar from '../../components/navbar/Navbar';
+import bookSchema from '../../validations/bookValidation';
 
 const CreateBook = () => {
 
-  const [title, setTitle] = useState('');
-  const [genre, setGenre] = useState('');
-  const [publicationDate, setPublicationDate] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [amount, setAmount] = useState('');
+  const onSubmit = () => {
+    console.log("Submitted");
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      amount: 0,
+      author: "",
+      description: "",
+      genre: "",
+      image: "",
+      publication_date: "",
+      publisher: "",
+      title: "",
+    },
+    validationSchema: bookSchema,
+    onSubmit,
+  })
 
-    // Perform desired action with form data
-    // For example, submit the form to a server or update state
-
-    // Reset the form
-    setTitle('');
-    setGenre('');
-    setPublicationDate('');
-    setDescription('');
-    setImage('');
-    setAmount('');
-  };
-
+  console.log(errors)
   return (
     <main className="flex relative">
       <Navbar />
@@ -36,22 +36,28 @@ const CreateBook = () => {
               <input
                 type="text"
                 id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
                 name='title'
-                className="all_inputs"
+                value={values.title}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.title && touched.title ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.title && touched.title && <p className="error_text">{errors.title}</p>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="genre">Genre:</label>
               <input
                 type="text"
                 id="genre"
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
                 name='genre'
-                className="all_inputs"
+                className={errors.genre && touched.genre ? "input_error" : "all_inputs"}
+                value={values.genre}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
               />
+              {errors.genre && touched.genre && <p className="error_text">{errors.genre}</p>}
             </div>
           </div>
           <div className="flex justify-between my-4">
@@ -60,22 +66,28 @@ const CreateBook = () => {
               <input
                 type="date"
                 id="publicationDate"
-                value={publicationDate}
-                onChange={(e) => setPublicationDate(e.target.value)}
                 name='publication_date'
-                className="all_inputs"
+                className={errors.publication_date && touched.publication_date ? "input_error" : "all_inputs"}
+                value={values.publication_date}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
               />
+              {errors.publication_date && touched.publication_date && <p className="error_text">{errors.publication_date}</p>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="amount">Amount:</label>
               <input
                 type="number"
                 id="amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
                 name='amount'
-                className="all_inputs"
+                className={errors.amount && touched.amount ? "input_error" : "all_inputs"}
+                value={values.amount}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
               />
+              {errors.amount && touched.amount && <p className="error_text">{errors.amount}</p>}
             </div>
           </div>
           <div className="flex justify-between my-4">
@@ -84,21 +96,27 @@ const CreateBook = () => {
               <input
                 type="text"
                 id="image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
                 name='image'
-                className="all_inputs"
+                className={errors.image && touched.image ? "input_error" : "all_inputs"}
+                value={values.image}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
               />
+              {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="description">Description:</label>
               <textarea
                 id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
                 name='description'
-                className="all_inputs"
+                className={errors.description && touched.description ? "input_error" : "all_inputs"}
+                value={values.description}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
               />
+              {errors.description && touched.description && <p className="error_text">{errors.description}</p>}
             </div>
           </div>
 

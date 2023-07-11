@@ -37,7 +37,7 @@ const BookInfo = () => {
                 </div>
                 <div className="flex justify-center">
                   <p><span className="font-bold">Genre:</span> {book_data.genre}</p>
-                  <p><span className="font-bold">Cost:</span>{book_data.amount}</p>
+                  <p><span className="font-bold">Count:</span>{book_data.amount}</p>
                 </div>
               </div>
               <p className="text-center">

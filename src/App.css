@@ -35,3 +35,19 @@
   color: #FFF;
   border-radius: 10px;
 }
+
+.input_error {
+  border: solid #fc8181 2px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.input_error:focus {
+  border: solid #fc8181 2px;
+  outline: #fc8181;
+}
+
+.error_text {
+  color: #fc8181;
+  font-size: small;
+}

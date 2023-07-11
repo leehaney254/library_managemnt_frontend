@@ -51,7 +51,7 @@ const SwiperElement = ({ slider_data }) => {
                   image={item.image}
                   item1="Title"
                   item1Val={item.title}
-                  item2="Cost"
+                  item2="Count"
                   item2Val1={item.amount}
                 />
               </Link>
