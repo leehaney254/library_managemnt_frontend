@@ -17,7 +17,7 @@ const MemberForm = () => {
     initialValues: {
       name: "",
       email: "",
-      debt: 0,
+      debt: "",
       phone_number: "",
       image: "",
     },
@@ -38,6 +38,7 @@ const MemberForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.name && touched.name ? "input_error" : "all_inputs"}
+            placeholder="Name"
             required
           />
           {errors.name && touched.name && <p className="error_text">{errors.name}</p>}
@@ -52,6 +53,7 @@ const MemberForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.email && touched.email ? "input_error" : "all_inputs"}
+            placeholder="example@gmail.com"
             required
           />
           {errors.email && touched.email && <p className="error_text">{errors.email}</p>}
@@ -68,6 +70,7 @@ const MemberForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
+            placeholder="0"
             required
           />
           {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
@@ -82,6 +85,7 @@ const MemberForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.phone_number && touched.phone_number ? "input_error" : "all_inputs"}
+            placeholder="+254"
             required
           />
           {errors.phone_number && touched.phone_number && <p className="error_text">{errors.phone_number}</p>}
@@ -97,6 +101,7 @@ const MemberForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           className={errors.image && touched.image ? "input_error" : "all_inputs"}
+          placeholder="http://example.com"
           required
         />
         {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
