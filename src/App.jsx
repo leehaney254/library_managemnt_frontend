@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Loader from './components/loader/Loader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // lazy loading to reduce load time
 const AllBooks = lazy(() => import('./pages/books/AllBooks'));
@@ -36,6 +38,7 @@ function App() {
           <Route path='/reservations/:id' element={<BookInfo />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </Suspense>
   )
 }

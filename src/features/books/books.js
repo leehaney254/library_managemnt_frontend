@@ -24,14 +24,8 @@ const createBookAction = createAsyncThunk('books/createBook', (values) => fetch(
     'Content-Type': 'application/json',
   },
   body: JSON.stringify(values),
-})
-  .then(response => {
-    if (response.ok) {
-      console.log('Book created successfully');
-    } else {
-      console.log('Error creating book');
-    }
-  }))
+}).then((res) => res.json())
+  .then((data) => data));
 
 //used to update a book
 const updateBooks = createAsyncThunk('books/updateBook', (values) => fetch(`${url}/books/${values.id}`, {
@@ -40,14 +34,8 @@ const updateBooks = createAsyncThunk('books/updateBook', (values) => fetch(`${ur
     'Content-Type': 'application/json',
   },
   body: JSON.stringify(values),
-})
-  .then(response => {
-    if (response.ok) {
-      console.log('Book created successfully');
-    } else {
-      console.log('Error creating book');
-    }
-  }))
+}).then((res) => res.json())
+  .then((data) => data));
 
 const booksSlice = createSlice({
   name: 'books',
@@ -85,6 +73,38 @@ const booksSlice = createSlice({
         ...state,
         loading: false,
         payload: null,
+        error: action.error.message,
+      }))
+      .addCase(createBookAction.pending, (state) => ({
+        ...state,
+        loading: true,
+      }))
+      .addCase(createBookAction.fulfilled, (state, action) => ({
+        ...state,
+        loading: false,
+        CreateResponse: action.payload,
+        error: '',
+      }))
+      .addCase(createBookAction.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        CreateResponse: null,
+        error: action.error.message,
+      }))
+      .addCase(updateBooks.pending, (state) => ({
+        ...state,
+        loading: true,
+      }))
+      .addCase(updateBooks.fulfilled, (state, action) => ({
+        ...state,
+        loading: false,
+        updateResponse: action.payload,
+        error: '',
+      }))
+      .addCase(updateBooks.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        updateResponse: null,
         error: action.error.message,
       }));
   },
