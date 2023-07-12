@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
 import Card from '../card/Card';
+import PropTypes from 'prop-types';
 
 const Pagination = ({ display }) => {
   // Here we use item offsets; we could also use page offsets
@@ -12,6 +13,8 @@ const Pagination = ({ display }) => {
 
   if (display.books) {
     items = display.books;
+  } else if (display.members) {
+    items = display.members;
   }
 
   // Simulate fetching items from another resources.\
@@ -27,7 +30,8 @@ const Pagination = ({ display }) => {
 
   return (
     <>
-      <div className="flex justify-around">
+      <div className="flex justify-around my-4">
+        {!currentItems.length && <p>Wow! Such Emptiness</p>}
         {currentItems.map((item) => {
           return (
             <Link to={`/books/${item.id}`} key={item.id}>
@@ -59,6 +63,10 @@ const Pagination = ({ display }) => {
       />
     </>
   );
+}
+
+Pagination.propTypes = {
+  display: PropTypes.object.isRequired,
 }
 
 export default Pagination

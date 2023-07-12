@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchMembers } from '../../features/members/members';
 import Navbar from '../../components/navbar/Navbar';
 import MainCard from '../../components/maincard/MainCard';
-import SwiperElement from '../../components/swiper/SwiperElement';
+import Pagination from '../../components/pagination/Pagination';
 
 const AllMembers = () => {
 
@@ -22,9 +22,8 @@ const AllMembers = () => {
       <div className="main_content">
         <MainCard text="Add a Member" button="Create member" links="/members/create" />
         <div>
-          {
-            members_data && <SwiperElement slider_data={members_data} />
-          }
+          {/* We only display when there is data from backend */}
+          {members_data && <Pagination display={members_data} />}
         </div>
       </div>
     </main>
