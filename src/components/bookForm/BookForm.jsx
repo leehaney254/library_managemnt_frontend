@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import bookSchema from '../../validations/bookValidation';
 import { createBookAction } from '../../features/books/books';
+import PropTypes from 'prop-types';
 
 const BookForm = ({ book_data }) => {
 
@@ -13,22 +14,25 @@ const BookForm = ({ book_data }) => {
     actions.resetForm();
   }
 
+  const initialValues = book_data ? book_data : {
+    amount: "",
+    author: "",
+    description: "",
+    genre: "",
+    image: "",
+    publication_date: "",
+    publisher: "",
+    title: "",
+  };
+
   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      amount: "",
-      author: "",
-      description: "",
-      genre: "",
-      image: "",
-      publication_date: "",
-      publisher: "",
-      title: "",
-    },
+    initialValues,
     validationSchema: bookSchema,
     onSubmit,
   })
 
   return (
+
     <form onSubmit={handleSubmit}>
       <div className="flex justify-between my-4">
         <div className="flex flex-col">
@@ -36,7 +40,7 @@ const BookForm = ({ book_data }) => {
           <input
             type="text"
             id="title"
-            name='title'
+            name="title"
             value={values.title}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -162,5 +166,10 @@ const BookForm = ({ book_data }) => {
     </form>
   )
 }
+
+BookForm.propTypes = {
+  book_data: PropTypes.object,
+}
+
 
 export default BookForm

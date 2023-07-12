@@ -20,7 +20,7 @@ const UpdateBook = () => {
     <main className="flex relative">
       <Navbar />
       <div className="main_content">
-        <BookForm />
+        {book_data && <BookForm book_data={book_data} />}
       </div>
     </main >
   )

@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import memberSchema from '../../validations/memberValidation';
 import { useFormik } from 'formik';
 import { createMemberAction } from '../../features/members/members';
+import PropTypes from 'prop-types';
 
-const MemberForm = () => {
+const MemberForm = ({ member_data }) => {
 
   const dispatch = useDispatch();
 
@@ -13,14 +14,16 @@ const MemberForm = () => {
     actions.resetForm();
   }
 
+  const initialValues = member_data ? member_data : {
+    name: "",
+    email: "",
+    debt: "",
+    phone_number: "",
+    image: "",
+  }
+
   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      debt: "",
-      phone_number: "",
-      image: "",
-    },
+    initialValues,
     validationSchema: memberSchema,
     onSubmit: onSubmit,
   })
@@ -109,6 +112,10 @@ const MemberForm = () => {
       <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
     </form>
   )
+}
+
+MemberForm.propTypes = {
+  member_data: PropTypes.object,
 }
 
 export default MemberForm
