@@ -1,53 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../components/navbar/Navbar';
+import { fetchBooks } from '../../features/books/books';
 
 const CreateReservation = () => {
 
-  const [selectedBook, setSelectedBook] = useState('');
-  const [selectedMember, setSelectedMember] = useState('');
-  const [cost, setCost] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  const handleBookChange = (e) => {
-    setSelectedBook(e.target.value);
-  };
+  const books_data = useSelector((state) => state.books.books);
+  const { books } = books_data;
 
-  const handleMemberChange = (e) => {
-    setSelectedMember(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Perform desired action with form data
-    // For example, submit the form to a server or update state
-
-    // Reset the form
-    setSelectedBook('');
-    setSelectedMember('');
-    setCost('');
-    setReturnDate('');
-  };
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch])
 
   return (
     <main className="flex relative">
       <Navbar />
       <div className="main_content">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="flex justify-between my-4">
-            <div className="flex flex-col">
-              <label htmlFor="book">Select Book:</label>
-              <select id="book" name='book' className="all_inputs" value={selectedBook} onChange={handleBookChange}>
+            {books && <div className="flex flex-col">
+              <label htmlFor="book_id">Select Book:</label>
+              <select
+                id="book_id"
+                name='book_id'
+                className="all_inputs"
+              >
                 <option value="">-- Select a book --</option>
                 {/* Add options dynamically from your book data */}
-                <option value="book1">Book 1</option>
-                <option value="book2">Book 2</option>
-                <option value="book3">Book 3</option>
+                {
+                  books.map((item) => {
+                    return (
+                      <option key={item.id} value={item.id} >{item.title}</option>
+                    )
+                  })
+                }
               </select>
             </div>
+            }
             <div className="flex flex-col">
-              <label htmlFor="member">Select Member:</label>
-              <select id="member" name='member' className="all_inputs" value={selectedMember} onChange={handleMemberChange}>
+              <label htmlFor="member_id">Select Member:</label>
+              <select
+                id="member_id"
+                name='member_id'
+                className="all_inputs"
+              >
                 <option value="">-- Select a member --</option>
                 {/* Add options dynamically from your member data */}
                 <option value="member1">Member 1</option>
@@ -62,19 +62,16 @@ const CreateReservation = () => {
               <input
                 type="number"
                 id="cost"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
                 name='cost' className="all_inputs"
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="returnDate">Return Date:</label>
+              <label htmlFor="returned">Return Date:</label>
               <input
                 type="date"
-                id="returnDate"
-                value={returnDate}
-                onChange={(e) => setReturnDate(e.target.value)}
-                name='return_date' className="all_inputs"
+                id="returned"
+                name='returned'
+                className="all_inputs"
               />
             </div>
           </div>
