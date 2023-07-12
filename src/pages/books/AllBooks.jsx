@@ -4,6 +4,7 @@ import { fetchBooks } from '../../features/books/books';
 import Navbar from '../../components/navbar/Navbar';
 import MainCard from '../../components/maincard/MainCard';
 import SwiperElement from '../../components/swiper/SwiperElement';
+import Pagination from '../../components/pagination/Pagination';
 
 const AllBooks = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,8 @@ const AllBooks = () => {
         </div>
         <div>
           {/* We only display when there is data from backend */}
-          {books_data && <SwiperElement slider_data={books_data} />}
+          {/* {books_data && <SwiperElement slider_data={books_data} />} */}
+          {books_data && <Pagination display={books_data} />}
         </div>
       </div>
     </main>

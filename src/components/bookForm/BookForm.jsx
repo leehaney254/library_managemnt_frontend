@@ -17,7 +17,14 @@ const BookForm = ({ book_data }) => {
   const onSubmit = (values, actions) => {
     if (requestType === "update") {
       dispatch(updateBooks(values));
+
+      //Redirect to book info
       navigate(`/books/${id}`);
+
+      //reload destination page
+      window.location.reload();
+
+      //display toast message
       toast.success('Book updated successfully', {
         position: "top-right",
         autoClose: 5000,
@@ -28,8 +35,27 @@ const BookForm = ({ book_data }) => {
         progress: undefined,
         theme: "light",
       });
+
     } else {
       dispatch(createBookAction(values));
+
+      //Redirect to book info
+      navigate(`/`);
+
+      //reload destination page
+      window.location.reload();
+
+      //display toast message
+      toast.success('Book created successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     actions.resetForm();
   }

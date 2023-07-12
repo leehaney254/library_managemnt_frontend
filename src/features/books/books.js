@@ -37,6 +37,13 @@ const updateBooks = createAsyncThunk('books/updateBook', (values) => fetch(`${ur
 }).then((res) => res.json())
   .then((data) => data));
 
+
+//used to update a book
+const deleteBook = createAsyncThunk('books/updateBook', (id) => fetch(`${url}/books/${id}`, {
+  method: 'DELETE',
+}).then((res) => res.json())
+  .then((data) => data));
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -111,4 +118,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export { fetchBooks, fetchBook, createBookAction, updateBooks };
+export { fetchBooks, fetchBook, createBookAction, updateBooks, deleteBook };
