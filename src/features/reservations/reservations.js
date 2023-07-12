@@ -7,14 +7,24 @@ const initialState = {
   error: '',
 };
 
-// Used to fetch all books
+// Used to fetch all reservations
 const fetchReservations = createAsyncThunk('books/fetchReservations', () => fetch(`${url}/reservations`)
   .then((res) => res.json())
   .then((data) => data));
 
-//used to fetch a single book
+//used to fetch a single reservation
 const fetchReservation = createAsyncThunk('books/fetchReservation', (id) => fetch(`${url}/reservations/${id}`)
   .then((res) => res.json())
+  .then((data) => data));
+
+//used to create a reservation
+const createReservationAction = createAsyncThunk('books/createReservation', (values) => fetch(`${url}/reservations`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+}).then((res) => res.json())
   .then((data) => data));
 
 const membersSlice = createSlice({
@@ -54,9 +64,25 @@ const membersSlice = createSlice({
         loading: false,
         payload: null,
         error: action.error.message,
+      }))
+      .addCase(createReservationAction.pending, (state) => ({
+        ...state,
+        loading: true,
+      }))
+      .addCase(createReservationAction.fulfilled, (state, action) => ({
+        ...state,
+        loading: false,
+        createdReserv: action.payload,
+        error: '',
+      }))
+      .addCase(createReservationAction.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        createdReserv: null,
+        error: action.error.message,
       }));
   },
 });
 
 export default membersSlice.reducer;
-export { fetchReservations, fetchReservation };
+export { fetchReservations, fetchReservation, createReservationAction };

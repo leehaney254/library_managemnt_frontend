@@ -17,7 +17,7 @@ const fetchBook = createAsyncThunk('books/fetchBook', (id) => fetch(`${url}/book
   .then((res) => res.json())
   .then((data) => data));
 
-//used to fetch a single book
+//used to create a book
 const createBookAction = createAsyncThunk('books/createBook', (values) => fetch(`${url}/books`, {
   method: 'POST',
   headers: {
