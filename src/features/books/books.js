@@ -33,6 +33,22 @@ const createBookAction = createAsyncThunk('books/createBook', (values) => fetch(
     }
   }))
 
+//used to update a book
+const updateBooks = createAsyncThunk('books/updateBook', (values) => fetch(`${url}/books/${values.id}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+})
+  .then(response => {
+    if (response.ok) {
+      console.log('Book created successfully');
+    } else {
+      console.log('Error creating book');
+    }
+  }))
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -75,4 +91,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export { fetchBooks, fetchBook, createBookAction };
+export { fetchBooks, fetchBook, createBookAction, updateBooks };

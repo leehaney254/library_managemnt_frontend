@@ -2,15 +2,22 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import bookSchema from '../../validations/bookValidation';
-import { createBookAction } from '../../features/books/books';
+import { createBookAction, updateBooks } from '../../features/books/books';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 const BookForm = ({ book_data }) => {
 
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const requestType = book_data ? "update" : "create";
 
   const onSubmit = (values, actions) => {
-    dispatch(createBookAction(values));
+    if (requestType === "update") {
+      dispatch(updateBooks(values, id));
+    } else {
+      dispatch(createBookAction(values));
+    }
     actions.resetForm();
   }
 
@@ -162,7 +169,9 @@ const BookForm = ({ book_data }) => {
         </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
+        {initialValues.title !== "" ? "Update" : "Create"}
+      </button>
     </form>
   )
 }

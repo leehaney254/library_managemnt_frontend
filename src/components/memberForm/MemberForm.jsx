@@ -109,7 +109,9 @@ const MemberForm = ({ member_data }) => {
         />
         {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
       </div>
-      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
+        {initialValues.name !== "" ? "Update" : "Create"}
+      </button>
     </form>
   )
 }
