@@ -32,7 +32,7 @@ const Pagination = ({ display }) => {
     <>
       <div className="flex justify-around my-4">
         {!currentItems.length && <p>Wow! Such Emptiness</p>}
-        {currentItems.map((item) => {
+        {display.books && currentItems.map((item) => {
           return (
             <Link to={`/books/${item.id}`} key={item.id}>
               <Card
@@ -45,6 +45,21 @@ const Pagination = ({ display }) => {
             </Link>
           )
         })
+        }
+        {
+          display.members && currentItems.map((item) => {
+            return (
+              <Link to={`/members/${item.id}`} key={item.id}>
+                <Card
+                  image={item.image}
+                  item1="Name"
+                  item1Val={item.name}
+                  item2="Debt"
+                  item2Val1={item.debt}
+                />
+              </Link>
+            )
+          })
         }
       </div>
       <ReactPaginate

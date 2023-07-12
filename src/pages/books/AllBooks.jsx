@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchBooks } from '../../features/books/books';
 import Navbar from '../../components/navbar/Navbar';
 import MainCard from '../../components/maincard/MainCard';
-import SwiperElement from '../../components/swiper/SwiperElement';
 import Pagination from '../../components/pagination/Pagination';
 
 const AllBooks = () => {
