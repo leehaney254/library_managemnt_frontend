@@ -61,7 +61,7 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5rem;
+  margin: 4rem 0;
   font-size: 1.2rem;
   gap: 5px;
 }

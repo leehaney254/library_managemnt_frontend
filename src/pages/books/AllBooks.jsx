@@ -57,7 +57,6 @@ const AllBooks = () => {
         </div>
         <div>
           {/* We only display when there is data from backend */}
-          {/* {books_data && <SwiperElement slider_data={books_data} />} */}
           {books_data && <Pagination display={books_data} />}
         </div>
       </div>

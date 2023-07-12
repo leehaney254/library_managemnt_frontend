@@ -27,7 +27,7 @@ const Pagination = ({ display }) => {
 
   return (
     <>
-      <div>
+      <div className="flex justify-around">
         {currentItems.map((item) => {
           return (
             <Link to={`/books/${item.id}`} key={item.id}>
