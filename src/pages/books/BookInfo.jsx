@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { fetchBook, deleteBook } from '../../features/books/books';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import BookInfoCard from '../../components/bookInfoCard/BookInfoCard';
 
 const BookInfo = () => {
 
@@ -45,32 +46,7 @@ const BookInfo = () => {
       <Navbar />
       <aside className="main_content">
         {/* We only display if there is data from backend */}
-        {book_data &&
-          <div>
-            <div className="flex justify-center">
-              <img className="w-52 h-72 object-cover" src={book_data.image} alt={book_data.title} />
-            </div>
-            <div>
-              <div className="flex flex-col items-center">
-                <div className="flex justify-center">
-                  <h1> <span className="font-bold">Title:</span>{book_data.title}</h1>
-                  <p><span className="font-bold">Author:</span>{book_data.author}</p>
-                </div>
-                <div className="flex justify-center">
-                  <p><span className="font-bold">Publisher:</span>{book_data.publisher}</p>
-                  <p><span className="font-bold">Publish date:</span> {book_data.publication_date}</p>
-                </div>
-                <div className="flex justify-center">
-                  <p><span className="font-bold">Genre:</span> {book_data.genre}</p>
-                  <p><span className="font-bold">Count:</span>{book_data.amount}</p>
-                </div>
-              </div>
-              <p className="text-center">
-                {book_data.description}
-              </p>
-            </div>
-          </div>
-        }
+        {book_data && <BookInfoCard book_data={book_data} />}
         <div className='flex justify-end gap-4'>
           <Link to={`/books/update/${id}`} className="button_update">Update</Link>
           <button className="button_delete" onClick={deleteHandler}>Delete</button>
