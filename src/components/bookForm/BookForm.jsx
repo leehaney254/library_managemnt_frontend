@@ -24,7 +24,8 @@ const BookForm = ({ book_data }) => {
       //reload destination page
       window.location.reload();
 
-      //display toast message
+
+      // Display the toast message after the page has loaded
       toast.success('Book updated successfully', {
         position: "top-right",
         autoClose: 5000,
@@ -57,7 +58,6 @@ const BookForm = ({ book_data }) => {
         theme: "light",
       });
     }
-    actions.resetForm();
   }
 
   const initialValues = book_data ? book_data : {

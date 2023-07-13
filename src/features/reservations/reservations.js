@@ -8,17 +8,17 @@ const initialState = {
 };
 
 // Used to fetch all reservations
-const fetchReservations = createAsyncThunk('books/fetchReservations', () => fetch(`${url}/reservations`)
+const fetchReservations = createAsyncThunk('reservations/fetchReservations', () => fetch(`${url}/reservations`)
   .then((res) => res.json())
   .then((data) => data));
 
 //used to fetch a single reservation
-const fetchReservation = createAsyncThunk('books/fetchReservation', (id) => fetch(`${url}/reservations/${id}`)
+const fetchReservation = createAsyncThunk('reservations/fetchReservation', (id) => fetch(`${url}/reservations/${id}`)
   .then((res) => res.json())
   .then((data) => data));
 
 //used to create a reservation
-const createReservationAction = createAsyncThunk('books/createReservation', (values) => fetch(`${url}/reservations`, {
+const createReservationAction = createAsyncThunk('reservations/createReservation', (values) => fetch(`${url}/reservations`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

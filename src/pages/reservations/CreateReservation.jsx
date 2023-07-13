@@ -6,15 +6,13 @@ import Navbar from '../../components/navbar/Navbar';
 import { fetchBooks } from '../../features/books/books';
 import { fetchMembers } from '../../features/members/members';
 import reservationSchema from '../../validations/reservationValidation';
-
-const onSubmit = () => {
-  console.log('Submitted');
-}
+import { createReservationAction } from '../../features/reservations/reservations';
+import { toast } from 'react-toastify';
 
 const CreateReservation = () => {
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const books_data = useSelector((state) => state.books.books);
   const members_data = useSelector((state) => state.member.members);
@@ -23,6 +21,30 @@ const CreateReservation = () => {
     dispatch(fetchBooks());
     dispatch(fetchMembers());
   }, [dispatch])
+
+  const onSubmit = (values) => {
+    // Send the create request
+    dispatch(createReservationAction(values))
+
+    // navigate to reservations page
+    navigate('/reservations');
+
+    //reload destination page
+    //window.location.reload();
+
+
+    // Display the toast message after the page has loaded
+    toast.success('Reservation created successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -36,7 +58,6 @@ const CreateReservation = () => {
     onSubmit,
   })
 
-  console.log(values);
   return (
     <main className="flex relative">
       <Navbar />

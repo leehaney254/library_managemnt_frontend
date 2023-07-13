@@ -15,6 +15,8 @@ const Pagination = ({ display }) => {
     items = display.books;
   } else if (display.members) {
     items = display.members;
+  } else if (display.reservations) {
+    items = display.reservations;
   }
 
   // Simulate fetching items from another resources.\
@@ -56,6 +58,21 @@ const Pagination = ({ display }) => {
                   item1Val={item.name}
                   item2="Debt"
                   item2Val1={item.debt}
+                />
+              </Link>
+            )
+          })
+        }
+        {
+          display.reservations && currentItems.map((item, index) => {
+            return (
+              <Link to={`/reservations/${index}`} key={index}>
+                <Card
+                  image={item.book.image}
+                  item1="Title"
+                  item1Val={item.book.title}
+                  item2="Person"
+                  item2Val1={item.member.name}
                 />
               </Link>
             )
