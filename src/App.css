@@ -35,3 +35,50 @@
   color: #FFF;
   border-radius: 10px;
 }
+
+.input_error {
+  border: solid #fc8181 2px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.input_error:focus {
+  border: solid #fc8181 2px;
+  outline: #fc8181;
+}
+
+.error_text {
+  color: #fc8181;
+  font-size: small;
+}
+
+button:disabled {
+  opacity: 0.35;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+
+.pagination .page-num:hover {
+  background-color: #007FFF;
+  color: #FFF;
+}
+
+.pagination .active {
+  background-color: #007FFF;
+  color: #FFF;
+}

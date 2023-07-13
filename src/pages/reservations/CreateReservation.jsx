@@ -1,33 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../components/navbar/Navbar';
+import { fetchBooks } from '../../features/books/books';
+import { fetchMembers } from '../../features/members/members';
+import reservationSchema from '../../validations/reservationValidation';
+import { createReservationAction } from '../../features/reservations/reservations';
+import { toast } from 'react-toastify';
 
 const CreateReservation = () => {
 
-  const [selectedBook, setSelectedBook] = useState('');
-  const [selectedMember, setSelectedMember] = useState('');
-  const [cost, setCost] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleBookChange = (e) => {
-    setSelectedBook(e.target.value);
-  };
+  const books_data = useSelector((state) => state.books.books);
+  const members_data = useSelector((state) => state.member.members);
 
-  const handleMemberChange = (e) => {
-    setSelectedMember(e.target.value);
-  };
+  useEffect(() => {
+    dispatch(fetchBooks());
+    dispatch(fetchMembers());
+  }, [dispatch])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (values) => {
+    // Send the create request
+    dispatch(createReservationAction(values))
 
-    // Perform desired action with form data
-    // For example, submit the form to a server or update state
+    // navigate to reservations page
+    navigate('/reservations');
 
-    // Reset the form
-    setSelectedBook('');
-    setSelectedMember('');
-    setCost('');
-    setReturnDate('');
-  };
+    //reload destination page
+    //window.location.reload();
+
+
+    // Display the toast message after the page has loaded
+    toast.success('Reservation created successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
+  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      member_id: "",
+      book_id: "",
+      cost: "",
+      return_date: "",
+      returned: false,
+    },
+    validationSchema: reservationSchema,
+    onSubmit,
+  })
 
   return (
     <main className="flex relative">
@@ -35,26 +64,56 @@ const CreateReservation = () => {
       <div className="main_content">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between my-4">
-            <div className="flex flex-col">
-              <label htmlFor="book">Select Book:</label>
-              <select id="book" name='book' className="all_inputs" value={selectedBook} onChange={handleBookChange}>
+            {books_data && <div className="flex flex-col">
+              <label htmlFor="book_id">Select Book:</label>
+              <select
+                id="book_id"
+                name='book_id'
+                value={values.book_id}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.book_id && touched.book_id ? "input_error" : "all_inputs"}
+                required
+              >
                 <option value="">-- Select a book --</option>
                 {/* Add options dynamically from your book data */}
-                <option value="book1">Book 1</option>
-                <option value="book2">Book 2</option>
-                <option value="book3">Book 3</option>
+                {
+                  books_data.books.map((item) => {
+                    return (
+                      <option key={item.id} value={item.id} >{item.title}</option>
+                    )
+                  })
+                }
               </select>
+              {errors.book_id && touched.book_id && <p className="error_text">{errors.book_id}</p>}
             </div>
-            <div className="flex flex-col">
-              <label htmlFor="member">Select Member:</label>
-              <select id="member" name='member' className="all_inputs" value={selectedMember} onChange={handleMemberChange}>
-                <option value="">-- Select a member --</option>
-                {/* Add options dynamically from your member data */}
-                <option value="member1">Member 1</option>
-                <option value="member2">Member 2</option>
-                <option value="member3">Member 3</option>
-              </select>
-            </div>
+            }
+
+            {
+              members_data && <div className="flex flex-col">
+                <label htmlFor="member_id">Select Member:</label>
+                <select
+                  id="member_id"
+                  name='member_id'
+                  value={values.member_id}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.member_id && touched.member_id ? "input_error" : "all_inputs"}
+                  required
+                >
+                  <option value="">-- Select a member --</option>
+                  {/* Add options dynamically from your member data */}
+                  {
+                    members_data.members.map((item) => {
+                      return (
+                        <option key={item.id} value={item.id}>{item.name}</option>
+                      )
+                    })
+                  }
+                </select>
+                {errors.member_id && touched.member_id && <p className="error_text">{errors.member_id}</p>}
+              </div>
+            }
           </div>
           <div className="flex justify-between my-4">
             <div className="flex flex-col">
@@ -62,23 +121,31 @@ const CreateReservation = () => {
               <input
                 type="number"
                 id="cost"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                name='cost' className="all_inputs"
+                name='cost'
+                value={values.cost}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.cost && touched.cost ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.cost && touched.cost && <p className="error_text">{errors.cost}</p>}
             </div>
             <div className="flex flex-col">
-              <label htmlFor="returnDate">Return Date:</label>
+              <label htmlFor="return_date">Return Date:</label>
               <input
                 type="date"
-                id="returnDate"
-                value={returnDate}
-                onChange={(e) => setReturnDate(e.target.value)}
-                name='return_date' className="all_inputs"
+                id="return_date"
+                name='return_date'
+                value={values.return_date}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.return_date && touched.return_date ? "input_error" : "all_inputs"}
+                required
               />
+              {errors.return_date && touched.return_date && <p className="error_text">{errors.return_date}</p>}
             </div>
           </div>
-          <button type="submit" className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
         </form>
       </div>
     </main>
