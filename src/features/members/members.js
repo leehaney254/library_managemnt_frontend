@@ -8,30 +8,25 @@ const initialState = {
 };
 
 // Used to fetch all members
-const fetchMembers = createAsyncThunk('books/fetchMembers', () => fetch(`${url}/members`)
+const fetchMembers = createAsyncThunk('members/fetchMembers', () => fetch(`${url}/members`)
   .then((res) => res.json())
   .then((data) => data));
 
 //used to fetch a single member
-const fetchMember = createAsyncThunk('books/fetchMember', (id) => fetch(`${url}/members/${id}`)
+const fetchMember = createAsyncThunk('members/fetchMember', (id) => fetch(`${url}/members/${id}`)
   .then((res) => res.json())
   .then((data) => data));
 
 //used to create a member
-const createMemberAction = createAsyncThunk('books/fetchMember', (values) => fetch(`${url}/members`, {
+const createMemberAction = createAsyncThunk('members/fetchMember', (values) => fetch(`${url}/members`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify(values),
 })
-  .then(response => {
-    if (response.ok) {
-      console.log('Member created successfully');
-    } else {
-      console.log('Error creating member');
-    }
-  }))
+  .then((res) => res.json())
+  .then((data) => data));
 
 const membersSlice = createSlice({
   name: 'members',

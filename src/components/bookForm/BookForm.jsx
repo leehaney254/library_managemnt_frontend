@@ -14,7 +14,7 @@ const BookForm = ({ book_data }) => {
   const requestType = book_data ? "update" : "create";
   const { id } = useParams();
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = (values) => {
     if (requestType === "update") {
       dispatch(updateBooks(values));
 
