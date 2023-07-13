@@ -10,6 +10,7 @@ const AllMembers = lazy(() => import('./pages/members/AllMembers'));
 const AllReservations = lazy(() => import('./pages/reservations/AllReservations'));
 const BookInfo = lazy(() => import('./pages/books/BookInfo'));
 const MambersInfo = lazy(() => import('./pages/members/MambersInfo'));
+const ReservationsInfo = lazy(() => import('./pages/reservations/ReservationsInfo'));
 const CreateBook = lazy(() => import('./pages/books/CreateBook'));
 const CreateMember = lazy(() => import('./pages/members/CreateMember'));
 const CreateReservation = lazy(() => import('./pages/reservations/CreateReservation'));
@@ -35,7 +36,7 @@ function App() {
           <Route path='/members/update/:id' element={<UpdateMember />} />
           <Route path='/reservations' element={<AllReservations />} />
           <Route path='/reservations/create' element={<CreateReservation />} />
-          <Route path='/reservations/:id' element={<BookInfo />} />
+          <Route path='/reservations/:id' element={<ReservationsInfo />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

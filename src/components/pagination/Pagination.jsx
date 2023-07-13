@@ -64,9 +64,9 @@ const Pagination = ({ display }) => {
           })
         }
         {
-          display.reservations && currentItems.map((item, index) => {
+          display.reservations && currentItems.map((item) => {
             return (
-              <Link to={`/reservations/${index}`} key={index}>
+              <Link to={`/reservations/${item.id}`} key={item.id}>
                 <Card
                   image={item.book.image}
                   item1="Title"
