@@ -35,7 +35,6 @@ const ReservationsInfo = () => {
         {reservations_data && <MemberInfoCard member_data={reservations_data.member} />}
         <div className='flex justify-end gap-4'>
           <button className="button_update" onClick={updateHandler}>Mark as Returned</button>
-          <button className="button_delete" onClick={deleteHandler}>Delete</button>
         </div>
       </aside>
     </main>

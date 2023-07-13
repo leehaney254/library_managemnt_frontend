@@ -30,7 +30,7 @@ const CreateReservation = () => {
     navigate('/reservations');
 
     //reload destination page
-    //window.location.reload();
+    window.location.reload();
 
 
     // Display the toast message after the page has loaded
