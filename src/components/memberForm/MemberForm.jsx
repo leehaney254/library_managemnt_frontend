@@ -2,22 +2,69 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import memberSchema from '../../validations/memberValidation';
 import { useFormik } from 'formik';
-import { createMemberAction } from '../../features/members/members';
+import { createMemberAction, updateMember } from '../../features/members/members';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MemberForm = ({ member_data }) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const onSubmit = (values, actions) => {
-    dispatch(createMemberAction(values));
-    actions.resetForm();
+  const requestType = member_data ? "update" : "create";
+
+  const onSubmit = (values) => {
+    if (requestType === "update") {
+      dispatch(updateMember(values));
+
+      //Redirect to member info
+      navigate(`/members/${id}`);
+
+      //reload destination page
+      window.location.reload();
+
+
+      // Display the toast message after the page has loaded
+      toast.success('Member updated successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (requestType === "create") {
+      dispatch(createMemberAction(values));
+
+      //Redirect to book info
+      navigate('/members');
+
+      //reload destination page
+      window.location.reload();
+
+      //display toast message
+      toast.success('Book created successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
   }
 
   const initialValues = member_data ? member_data : {
     name: "",
     email: "",
-    debt: "",
+    debt: 0,
     phone_number: "",
     image: "",
   }
@@ -63,21 +110,22 @@ const MemberForm = ({ member_data }) => {
         </div>
       </div>
       <div className="flex justify-between my-4">
-        <div className="flex flex-col">
-          <label htmlFor="debt">Debt:</label>
-          <input
-            type="number"
-            id="debt"
-            name='debt'
-            value={values.debt}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
-            placeholder="0"
-            required
-          />
-          {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
-        </div>
+        {initialValues.name !== "" ?
+          <div className="flex flex-col">
+            <label htmlFor="debt">Debt:</label>
+            <input
+              type="number"
+              id="debt"
+              name='debt'
+              value={values.debt}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
+              placeholder="0"
+              required
+            />
+            {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
+          </div> : ""}
         <div className="flex flex-col">
           <label htmlFor="phoneNumber">Phone Number:</label>
           <input

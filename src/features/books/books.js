@@ -38,7 +38,7 @@ const updateBooks = createAsyncThunk('books/updateBook', (values) => fetch(`${ur
   .then((data) => data));
 
 
-//used to update a book
+//used to delete a book
 const deleteBook = createAsyncThunk('books/updateBook', (id) => fetch(`${url}/books/${id}`, {
   method: 'DELETE',
 }).then((res) => res.json())

@@ -28,6 +28,23 @@ const createMemberAction = createAsyncThunk('members/fetchMember', (values) => f
   .then((res) => res.json())
   .then((data) => data));
 
+//used to update a Member
+const updateMember = createAsyncThunk('members/updateMember', (values) => fetch(`${url}/members/${values.id}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+}).then((res) => res.json())
+  .then((data) => data));
+
+
+//used to delete a Member
+const deleteMember = createAsyncThunk('members/deleteMember', (id) => fetch(`${url}/members/${id}`, {
+  method: 'DELETE',
+}).then((res) => res.json())
+  .then((data) => data));
+
 const membersSlice = createSlice({
   name: 'members',
   initialState,
@@ -70,4 +87,4 @@ const membersSlice = createSlice({
 });
 
 export default membersSlice.reducer;
-export { fetchMembers, fetchMember, createMemberAction };
+export { fetchMembers, fetchMember, createMemberAction, updateMember, deleteMember };
