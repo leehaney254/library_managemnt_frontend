@@ -14,16 +14,9 @@ const BookForm = ({ book_data }) => {
   const requestType = book_data ? "update" : "create";
   const { id } = useParams();
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, actions) => {
     if (requestType === "update") {
       dispatch(updateBooks(values));
-
-      //Redirect to book info
-      navigate(`/books/${id}`);
-
-      //reload destination page
-      window.location.reload();
-
 
       // Display the toast message after the page has loaded
       toast.success('Book updated successfully', {
