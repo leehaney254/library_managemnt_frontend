@@ -63,7 +63,7 @@ const CreateReservation = () => {
       <Navbar />
       <div className="main_content">
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-between my-4">
+          <div className="input-cards">
             {books_data && <div className="flex flex-col">
               <label htmlFor="book_id">Select Book:</label>
               <select
@@ -115,7 +115,7 @@ const CreateReservation = () => {
               </div>
             }
           </div>
-          <div className="flex justify-between my-4">
+          <div className="input-cards">
             <div className="flex flex-col">
               <label htmlFor="cost">Cost:</label>
               <input
