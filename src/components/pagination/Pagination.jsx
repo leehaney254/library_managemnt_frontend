@@ -8,6 +8,8 @@ const Pagination = ({ display }) => {
   // Handle number of cards according to screen size
   const [screenSize, setScreenSize] = useState();
   const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [searchBook, setSearchBook] = useState('');
+
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -38,22 +40,54 @@ const Pagination = ({ display }) => {
     items = display.reservations;
   }
 
+  // filter the books according to the seach query
+  const filteredBooks = items.filter((book) => {
+    // we get the title and author from book
+    const { title, author } = book;
+    //we lowe case the search query
+    const lowerCaseSearch = searchBook.toLowerCase();
+    return (
+      title.toLowerCase().includes(lowerCaseSearch) ||
+      author.toLowerCase().includes(lowerCaseSearch)
+    );
+  });
+
   // Simulate fetching items from another resources.\
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
+  // set the books t be displayed
+  const currentBooks = filteredBooks.slice(itemOffset, endOffset);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
   };
 
+  // Get the value from the search input
+  const searchChangeHandler = (event) => {
+    // set the first search input as empty
+
+    setSearchBook(event.target.value);
+  }
+
   return (
     <>
+      {
+        display.books && <div className="books-input">
+          <input
+            type="text"
+            placeholder="Find by title or Author"
+            className="all_inputs"
+            value={searchBook}
+            onChange={searchChangeHandler}
+          />
+        </div>
+      }
       <div className="flex justify-around my-4">
         {!currentItems.length && <p>Wow! Such Emptiness</p>}
-        {display.books && currentItems.map((item) => {
+        {display.books && currentBooks.map((item) => {
           return (
             <Link to={`/books/${item.id}`} key={item.id}>
               <Card

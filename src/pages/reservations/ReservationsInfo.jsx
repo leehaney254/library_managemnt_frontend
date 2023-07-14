@@ -21,10 +21,6 @@ const ReservationsInfo = () => {
 
   }
 
-  const deleteHandler = () => {
-
-  }
-
   return (
     <main className="space-bottom">
       <Navbar />
