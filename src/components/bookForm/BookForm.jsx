@@ -77,7 +77,7 @@ const BookForm = ({ book_data }) => {
   })
 
   return (
-    <div>
+    <div className="space-bottom">
       <form onSubmit={handleSubmit}>
         <div className="input-cards">
           <div className="flex flex-col">

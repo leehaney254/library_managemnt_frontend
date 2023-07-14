@@ -42,7 +42,7 @@ const BookInfo = () => {
   }
 
   return (
-    <main>
+    <main className="space-bottom">
       <Navbar />
       <aside className="main_content">
         {/* We only display if there is data from backend */}

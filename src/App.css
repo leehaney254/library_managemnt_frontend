@@ -119,4 +119,8 @@ button:disabled {
     flex-direction: column;
     gap: 1rem;
   }
+
+  .space-bottom {
+    padding-bottom: 3rem;
+  }
 }

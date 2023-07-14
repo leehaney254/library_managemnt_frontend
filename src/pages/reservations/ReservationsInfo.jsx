@@ -26,7 +26,7 @@ const ReservationsInfo = () => {
   }
 
   return (
-    <main>
+    <main className="space-bottom">
       <Navbar />
       <aside className="main_content">
         {/* Display the book */}
