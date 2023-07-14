@@ -79,7 +79,7 @@ const BookForm = ({ book_data }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="title">Title:</label>
             <input
@@ -111,7 +111,7 @@ const BookForm = ({ book_data }) => {
             {errors.genre && touched.genre && <p className="error_text">{errors.genre}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="author">Author:</label>
             <input
@@ -143,7 +143,7 @@ const BookForm = ({ book_data }) => {
             {errors.publisher && touched.publisher && <p className="error_text">{errors.publisher}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="publicationDate">Publication Date:</label>
             <input
@@ -175,7 +175,7 @@ const BookForm = ({ book_data }) => {
             {errors.amount && touched.amount && <p className="error_text">{errors.amount}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="image">Image:</label>
             <input
