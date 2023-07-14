@@ -83,6 +83,12 @@ button:disabled {
   color: #FFF;
 }
 
+.books-input {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+}
+
 @media only screen and (max-width: 640px) {
   .main_content {
     width: 100vw;
@@ -96,5 +102,10 @@ button:disabled {
     margin: 4rem 0;
     font-size: 0.6rem;
     gap: 1px;
+  }
+
+  .books-input {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

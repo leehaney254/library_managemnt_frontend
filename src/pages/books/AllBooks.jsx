@@ -38,7 +38,7 @@ const AllBooks = () => {
       <Navbar />
       <div className="main_content">
         <MainCard text="Add a Book" button="Create Book" links="/books/create" />
-        <div className="flex justify-between my-6">
+        <div className="books-input">
           <input
             type="text"
             placeholder="Find by title"
