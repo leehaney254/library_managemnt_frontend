@@ -1,14 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
 import Card from '../card/Card';
 import PropTypes from 'prop-types';
 
 const Pagination = ({ display }) => {
+  // Handle number of cards according to screen size
+  const [screenSize, setScreenSize] = useState();
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setItemsPerPage(1)
+    } else {
+      setItemsPerPage(3);
+    }
+  }, [screenSize]);
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 3;
   let items = [];
 
   if (display.books) {
@@ -83,7 +102,7 @@ const Pagination = ({ display }) => {
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={itemsPerPage}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}

@@ -82,3 +82,19 @@ button:disabled {
   background-color: #007FFF;
   color: #FFF;
 }
+
+@media only screen and (max-width: 640px) {
+  .main_content {
+    width: 100vw;
+    margin-left: 0;
+    background-color: #FFF;
+    padding: 2rem;
+    height: auto;
+  }
+
+  .pagination {
+    margin: 4rem 0;
+    font-size: 0.6rem;
+    gap: 1px;
+  }
+}
