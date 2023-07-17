@@ -77,7 +77,7 @@ const MemberForm = ({ member_data }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex justify-between my-4">
+      <div className="input-cards">
         <div className="flex flex-col">
           <label htmlFor="name">Name:</label>
           <input
@@ -109,7 +109,39 @@ const MemberForm = ({ member_data }) => {
           {errors.email && touched.email && <p className="error_text">{errors.email}</p>}
         </div>
       </div>
-      <div className="flex justify-between my-4">
+      <div className="input-cards">
+        <div className="flex flex-col">
+          <label htmlFor="phoneNumber">Phone Number:</label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            name='phone_number'
+            value={values.phone_number}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.phone_number && touched.phone_number ? "input_error" : "all_inputs"}
+            placeholder="+254"
+            required
+          />
+          {errors.phone_number && touched.phone_number && <p className="error_text">{errors.phone_number}</p>}
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="image">Image:</label>
+          <input
+            type="text"
+            id="image"
+            name='image'
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.image && touched.image ? "input_error" : "all_inputs"}
+            placeholder="http://example.com"
+            required
+          />
+          {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
+        </div>
+      </div>
+      <div className="input-cards">
         {initialValues.name !== "" ?
           <div className="flex flex-col">
             <label htmlFor="debt">Debt:</label>
@@ -126,40 +158,13 @@ const MemberForm = ({ member_data }) => {
             />
             {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
           </div> : ""}
-        <div className="flex flex-col">
-          <label htmlFor="phoneNumber">Phone Number:</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name='phone_number'
-            value={values.phone_number}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.phone_number && touched.phone_number ? "input_error" : "all_inputs"}
-            placeholder="+254"
-            required
-          />
-          {errors.phone_number && touched.phone_number && <p className="error_text">{errors.phone_number}</p>}
-        </div>
+        {initialValues.name !== "" ? <div><input type="" /></div> : ""}
       </div>
-      <div className="flex flex-col">
-        <label htmlFor="image">Image:</label>
-        <input
-          type="text"
-          id="image"
-          name='image'
-          value={values.image}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.image && touched.image ? "input_error" : "all_inputs"}
-          placeholder="http://example.com"
-          required
-        />
-        {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
+      <div className="flex justify-end px-52">
+        <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
+          {initialValues.name !== "" ? "Update" : "Create"}
+        </button>
       </div>
-      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
-        {initialValues.name !== "" ? "Update" : "Create"}
-      </button>
     </form>
   )
 }

@@ -30,7 +30,7 @@ const CreateReservation = () => {
     navigate('/reservations');
 
     //reload destination page
-    //window.location.reload();
+    window.location.reload();
 
 
     // Display the toast message after the page has loaded
@@ -63,7 +63,7 @@ const CreateReservation = () => {
       <Navbar />
       <div className="main_content">
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-between my-4">
+          <div className="input-cards">
             {books_data && <div className="flex flex-col">
               <label htmlFor="book_id">Select Book:</label>
               <select
@@ -115,7 +115,7 @@ const CreateReservation = () => {
               </div>
             }
           </div>
-          <div className="flex justify-between my-4">
+          <div className="input-cards">
             <div className="flex flex-col">
               <label htmlFor="cost">Cost:</label>
               <input
@@ -145,7 +145,9 @@ const CreateReservation = () => {
               {errors.return_date && touched.return_date && <p className="error_text">{errors.return_date}</p>}
             </div>
           </div>
-          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          <div className="flex justify-end px-56">
+            <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          </div>
         </form>
       </div>
     </main>

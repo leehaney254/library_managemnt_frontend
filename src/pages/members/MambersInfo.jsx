@@ -46,7 +46,7 @@ const MambersInfo = () => {
   return (
     <main>
       <Navbar />
-      <aside className="main_content">
+      <aside className="main_content my-10">
         {member_data && <MemberInfoCard member_data={member_data} />}
         <div className='flex justify-end gap-4'>
           <Link to={`/members/update/${id}`} className="button_update">Update</Link>

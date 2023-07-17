@@ -14,9 +14,15 @@ const BookForm = ({ book_data }) => {
   const requestType = book_data ? "update" : "create";
   const { id } = useParams();
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = (values) => {
     if (requestType === "update") {
       dispatch(updateBooks(values));
+
+      //Redirect to book info
+      navigate(`/books/${id}`);
+
+      //reload destination page
+      window.location.reload();
 
       // Display the toast message after the page has loaded
       toast.success('Book updated successfully', {
@@ -71,9 +77,9 @@ const BookForm = ({ book_data }) => {
   })
 
   return (
-    <div>
+    <div className="space-bottom">
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="title">Title:</label>
             <input
@@ -105,7 +111,7 @@ const BookForm = ({ book_data }) => {
             {errors.genre && touched.genre && <p className="error_text">{errors.genre}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="author">Author:</label>
             <input
@@ -137,7 +143,7 @@ const BookForm = ({ book_data }) => {
             {errors.publisher && touched.publisher && <p className="error_text">{errors.publisher}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="publicationDate">Publication Date:</label>
             <input
@@ -169,7 +175,7 @@ const BookForm = ({ book_data }) => {
             {errors.amount && touched.amount && <p className="error_text">{errors.amount}</p>}
           </div>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="input-cards">
           <div className="flex flex-col">
             <label htmlFor="image">Image:</label>
             <input
@@ -200,10 +206,11 @@ const BookForm = ({ book_data }) => {
             {errors.description && touched.description && <p className="error_text">{errors.description}</p>}
           </div>
         </div>
-
-        <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
-          {initialValues.title !== "" ? "Update" : "Create"}
-        </button>
+        <div className="flex justify-end px-52">
+          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
+            {initialValues.title !== "" ? "Update" : "Create"}
+          </button>
+        </div>
       </form>
     </div>
   )
