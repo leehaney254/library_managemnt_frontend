@@ -16,6 +16,7 @@ const CreateReservation = () => {
 
   const books_data = useSelector((state) => state.books.books);
   const members_data = useSelector((state) => state.member.members);
+  const reservation_error = useSelector((state) => state.reservation.error);
 
   useEffect(() => {
     dispatch(fetchBooks());
@@ -26,27 +27,39 @@ const CreateReservation = () => {
     // Send the create request
     dispatch(createReservationAction(values))
 
-    // navigate to reservations page
-    navigate('/reservations');
+    if (reservation_error) {
+      toast.error(reservation_error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      // Display the toast message after the page has loaded
+      toast.success('Reservation created succesfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
 
-    //reload destination page
-    window.location.reload();
+      // navigate to reservations page
+      navigate('/reservations');
 
-
-    // Display the toast message after the page has loaded
-    toast.success('Reservation created successfully', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+      // reload destination page
+      window.location.reload();
+    }
   }
 
-  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       member_id: "",
       book_id: "",
@@ -146,7 +159,7 @@ const CreateReservation = () => {
             </div>
           </div>
           <div className="flex justify-end px-56">
-            <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+            <button type="submit" className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
           </div>
         </form>
       </div>
