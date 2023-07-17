@@ -17,8 +17,7 @@
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [📝 License ](#-license-)
+  - [� License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -164,16 +163,7 @@ Feel free to check the [issues page](../../issues/).
 ## ⭐️ Show your support <a name="support"></a>
 
 
-If you like this project kindly leave a ⭐ and reach us through our social media links above.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-
-We would like to thank microverse and the whole team for the support they provided during project development. I would also like to thank [Murat Korkmaz](https://www.behance.net/muratk) for the great designs.
+If you like this project kindly leave a ⭐ and reach me through our social media links above.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
