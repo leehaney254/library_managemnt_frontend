@@ -26,6 +26,26 @@
 
 **[Libarary Management Frontend]** is an application that one can manage the books, members and reservations. It provides a good and simple UI for users to interact with.
 
+## 🛠 views <a name="views"></a>
+### Desktop Views
+<img width="799" alt="booksdesktop" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/49fc15e6-c1fc-4071-aa93-0581e4731821">
+
+<img width="791" alt="booksInfordesk" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/34d589f3-9526-4c4a-b713-2caef3a653bc">
+
+<img width="797" alt="createbooks" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/dab31209-9e95-4c59-a300-d9bff1047f3a">
+
+<img width="800" alt="membersDesktop" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/04cdc7e8-b981-452a-9f9a-2254f18df872">
+
+<img width="799" alt="membersInfodesk" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/ed00b06d-376e-4309-b028-e4a761e375eb">
+
+<img width="794" alt="createmembersdesk" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/fd463b5d-4148-4c4b-a6d9-f2bfd6a4ea45">
+
+<img width="800" alt="reservationdesktop" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/c6b66fed-206f-4522-9e8b-ddf2e3f997f7">
+
+<img width="798" alt="createReservationdesk" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/00598d71-df3d-4e8e-9a60-9c7bd120714c">
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
