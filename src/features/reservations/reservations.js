@@ -27,6 +27,12 @@ const createReservationAction = createAsyncThunk('reservations/createReservation
 }).then((res) => res.json())
   .then((data) => data));
 
+const deleteReservation = createAsyncThunk('reservations/deleteReservation', (id) => fetch(`${url}/reservations/${id}`, {
+  method: 'DELETE',
+}).then((res) => res.json())
+  .then((data) => data));
+
+
 const membersSlice = createSlice({
   name: 'reservations',
   initialState,
@@ -85,4 +91,4 @@ const membersSlice = createSlice({
 });
 
 export default membersSlice.reducer;
-export { fetchReservations, fetchReservation, createReservationAction };
+export { fetchReservations, fetchReservation, createReservationAction, deleteReservation };

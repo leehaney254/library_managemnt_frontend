@@ -108,6 +108,10 @@ button:disabled {
     height: auto;
   }
 
+  .all_inputs {
+    width: auto;
+  }
+
   .pagination {
     margin: 4rem 0;
     font-size: 0.6rem;

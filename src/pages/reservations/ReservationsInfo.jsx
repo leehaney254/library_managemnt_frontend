@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchReservation } from '../../features/reservations/reservations';
 import MemberInfoCard from '../../components/memberInfoCard/MemberInfoCard';
 import BookInfoCard from '../../components/bookInfoCard/BookInfoCard';
+import { deleteReservation } from '../../features/reservations/reservations';
+import { toast } from 'react-toastify';
 
 const ReservationsInfo = () => {
 
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const reservations_data = useSelector((state) => state.reservation.payload.reservation);
 
@@ -18,7 +21,25 @@ const ReservationsInfo = () => {
   }, [dispatch, id])
 
   const updateHandler = () => {
+    dispatch(deleteReservation(id));
 
+    //Redirect to reservations
+    navigate(`/reservations`);
+
+    //reload destination page
+    window.location.reload();
+
+    // Display the toast message after the page has loaded
+    toast.success('Reservation removed successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   return (
