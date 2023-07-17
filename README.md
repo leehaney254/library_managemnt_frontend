@@ -13,7 +13,7 @@
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Usage](#usage)
-  - [👥 Authors ](#-authors-)
+  - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -106,7 +106,7 @@ Clone this repository to your desired folder:
 - Create a local directory where you can clone the project
 - Clone the project to your directory by running
 ```sh
-  git clone https://github.com/leehaney254/tutors-appointment-frontend.git
+  git clone https://github.com/leehaney254/library_managemnt_frontend.git
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -116,7 +116,7 @@ Clone this repository to your desired folder:
 To run the project, execute the following command:
 
 ```sh
-  npm start
+  npm run dev
 ```
 To run the tests, execute the following command:
 
@@ -129,19 +129,7 @@ NB: To run the tests successfully make sure you have connected the front-end to 
 
 <!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
-
-👤 **Josphat Kiploman**
-
-- GitHub: [@github](https://github.com/Josphat205)
-- Twitter: [@twitter](https://twitter.com/josphatloman)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/josphat205)
-
-👤 **Hassan EL OUARDY**
-
-- GitHub: [@codehass](https://github.com/codehass)
-- Twitter: [@hassanelourdy](https://twitter.com/hassanelourdy)
-- LinkedIn: [Hassan El OUARDY](https://www.linkedin.com/in/hassan-el-ouardy-360b99169/)
+## 👥 Author <a name="authors"></a>
 
 👤 **Leehaney George**
 
@@ -155,9 +143,8 @@ NB: To run the tests successfully make sure you have connected the front-end to 
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Ratings]** Rating should be added to identify the best tutor.
-- [ ] **[Search bar]** A search bar allows readers to search for specific topics or keywords within the blog.
-- [ ] **[Sharing buttons]** Sharing buttons make it easy for readers to share the link on social media platforms or other websites.
+- [ ] Improve UI/UX
+- [ ] Add Authentification and authorization
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
