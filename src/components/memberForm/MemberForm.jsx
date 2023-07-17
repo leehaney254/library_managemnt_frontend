@@ -157,9 +157,11 @@ const MemberForm = ({ member_data }) => {
           />
           {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
         </div> : ""}
-      <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
-        {initialValues.name !== "" ? "Update" : "Create"}
-      </button>
+      <div className="flex justify-end px-52">
+        <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
+          {initialValues.name !== "" ? "Update" : "Create"}
+        </button>
+      </div>
     </form>
   )
 }

@@ -145,7 +145,9 @@ const CreateReservation = () => {
               {errors.return_date && touched.return_date && <p className="error_text">{errors.return_date}</p>}
             </div>
           </div>
-          <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          <div className="flex justify-end px-56">
+            <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">Create</button>
+          </div>
         </form>
       </div>
     </main>

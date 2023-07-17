@@ -206,7 +206,7 @@ const BookForm = ({ book_data }) => {
             {errors.description && touched.description && <p className="error_text">{errors.description}</p>}
           </div>
         </div>
-        <div className="flex justify-end px-56">
+        <div className="flex justify-end px-52">
           <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
             {initialValues.title !== "" ? "Update" : "Create"}
           </button>
