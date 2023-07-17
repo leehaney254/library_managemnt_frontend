@@ -141,22 +141,25 @@ const MemberForm = ({ member_data }) => {
           {errors.image && touched.image && <p className="error_text">{errors.image}</p>}
         </div>
       </div>
-      {initialValues.name !== "" ?
-        <div className="flex flex-col">
-          <label htmlFor="debt">Debt:</label>
-          <input
-            type="number"
-            id="debt"
-            name='debt'
-            value={values.debt}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
-            placeholder="0"
-            required
-          />
-          {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
-        </div> : ""}
+      <div className="input-cards">
+        {initialValues.name !== "" ?
+          <div className="flex flex-col">
+            <label htmlFor="debt">Debt:</label>
+            <input
+              type="number"
+              id="debt"
+              name='debt'
+              value={values.debt}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.debt && touched.debt ? "input_error" : "all_inputs"}
+              placeholder="0"
+              required
+            />
+            {errors.debt && touched.debt && <p className="error_text">{errors.debt}</p>}
+          </div> : ""}
+        {initialValues.name !== "" ? <div><input type="" /></div> : ""}
+      </div>
       <div className="flex justify-end px-52">
         <button type="submit" disabled={isSubmitting} className="bg-azure p-2 mt-4 rounded-md text-white">
           {initialValues.name !== "" ? "Update" : "Create"}
