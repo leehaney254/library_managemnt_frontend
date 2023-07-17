@@ -3,7 +3,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Tutors Appointment Frontend ](#-tutors-appointment-frontend-)
+- [📖 Libarary Management Frontend ](#-libarary-management-frontend-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Back-end ](#back-end-)
@@ -22,10 +22,10 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Tutors Appointment Frontend <a name="about-project"></a>
+# 📖 Libarary Management Frontend <a name="about-project"></a>
 
 
-**[Tutors-appointment-app]** A tutor's appointment app is a web application designed to facilitate the scheduling and management of tutoring sessions between tutors and students. It serves as a platform for tutors and students to connect, coordinate, and keep track of their tutoring appointments.
+**[Libarary Management Frontend]** is an application that one can manage the books, members and reservations. It provides a good and simple UI for users to interact with.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -45,7 +45,7 @@ This project was build using React and Redux
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Back-end <a name="Front end"></a>
-The apps back-end can be found [here.](https://github.com/leehaney254/tutors-appointment-backend)
+The apps back-end can be found [here.](https://github.com/leehaney254/library_management_backend.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -53,11 +53,8 @@ The apps back-end can be found [here.](https://github.com/leehaney254/tutors-app
 
 ## 🚀 Live Demo <a name="live-demo"></a>.
 
-- [Live Demo Link](https://starlit-syrniki-d3f2fe.netlify.app/)
+- [Live Demo Link](#)
 
-  - To login as an administrator in hosting app use:
-    - username : Administrator1
-    - password : admin123
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- Features -->
 
@@ -65,10 +62,9 @@ The apps back-end can be found [here.](https://github.com/leehaney254/tutors-app
 
 Features in this project
 
-- **Login**
-- **Signup**
-- **Create tutors**
-- **Create reservations**
+- **CRUD Reservations**
+- **CRUD Members**
+- **CRUD Books**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,16 +77,16 @@ To get a local copy up and running, follow these steps.
 - Create a local directory where you can clone the project
 - Clone the project to your directory by running
 ```sh
-git clone https://github.com/leehaney254/tutors-appointment-frontend.git
+git clone https://github.com/leehaney254/library_managemnt_frontend.git
 ```
 - Run 
 ```sh 
 npm install
 ```
-- Clone the backend and run it (NB: Only the admin can add and delete tutors).
+- Clone the backend and run it.
 - To start your app run:
 ```sh 
-npm start
+npm run dev
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
