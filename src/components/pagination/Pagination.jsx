@@ -32,33 +32,38 @@ const Pagination = ({ display }) => {
   const [itemOffset, setItemOffset] = useState(0);
   let items = [];
 
+  let filteredBooks = () => { };
+
   if (display.books) {
     items = display.books;
+
+    // filter the books according to the seach query
+    filteredBooks = items.filter((book) => {
+      // we get the title and author from book
+      const { title, author } = book;
+      //we lowe case the search query
+      const lowerCaseSearch = searchBook.toLowerCase();
+      return (
+        title.toLowerCase().includes(lowerCaseSearch) ||
+        author.toLowerCase().includes(lowerCaseSearch)
+      );
+    });
   } else if (display.members) {
     items = display.members;
   } else if (display.reservations) {
     items = display.reservations;
   }
 
-  // filter the books according to the seach query
-  const filteredBooks = items.filter((book) => {
-    // we get the title and author from book
-    const { title, author } = book;
-    //we lowe case the search query
-    const lowerCaseSearch = searchBook.toLowerCase();
-    return (
-      title.toLowerCase().includes(lowerCaseSearch) ||
-      author.toLowerCase().includes(lowerCaseSearch)
-    );
-  });
-
   // Simulate fetching items from another resources.\
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
+  let currentBooks = [];
 
-  // set the books t be displayed
-  const currentBooks = filteredBooks.slice(itemOffset, endOffset);
+  if (display.books) {
+    // set the books t be displayed
+    currentBooks = filteredBooks.slice(itemOffset, endOffset);
+  }
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -125,7 +130,7 @@ const Pagination = ({ display }) => {
                   item1="Title"
                   item1Val={item.book.title}
                   item2="Person"
-                  item2Val1={item.member.name}
+                  item2Val={item.member.name}
                 />
               </Link>
             )

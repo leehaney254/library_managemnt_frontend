@@ -64,7 +64,7 @@ const Navbar = () => {
         {
           socialMedia.map((item, index) => {
             return (
-              <Link className="text-xl" to={item.link} key={index}>
+              <Link className="text-xl" to={item.link} key={index} target="_blank">
                 <item.icon />
               </Link>
             )
