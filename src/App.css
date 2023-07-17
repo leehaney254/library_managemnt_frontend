@@ -14,6 +14,7 @@
   border: solid #330099 2px;
   padding: 0.5rem;
   border-radius: 10px;
+  min-width: 15rem;
 }
 
 .all_inputs:focus {
