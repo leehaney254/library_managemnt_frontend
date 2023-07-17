@@ -44,6 +44,27 @@
 
 <img width="798" alt="createReservationdesk" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/00598d71-df3d-4e8e-9a60-9c7bd120714c">
 
+### Mobile views
+
+<img width="176" alt="bookmobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/fe847f5a-1c59-4eba-9fd4-c5442cb9a89e">
+
+<img width="175" alt="bookinfomobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/75b4960b-377b-4326-b140-0411bdd4ec76">
+
+<img width="174" alt="newbookmobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/da46f7f1-0701-41fd-ba52-3d2da94a45f2">
+
+<img width="173" alt="membermobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/886c852c-ba0a-4986-a1e6-673f864fec9e">
+
+<img width="178" alt="memberinfomobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/ff7f2d6b-7e0c-469b-8ce4-b0d60bbc6388">
+
+<img width="179" alt="createmembermobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/49b5ad9c-174a-40c1-b1b1-e9d3ae36e8f5">
+
+<img width="184" alt="reservationmobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/cae659e7-dc20-4aa5-acb1-4c7076678947">
+
+<img width="175" alt="createReservationMobi" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/d2562bde-db99-445e-935b-d78ff7030bf0">
+
+### Error handling
+<img width="794" alt="errors" src="https://github.com/leehaney254/library_managemnt_frontend/assets/65546920/b5ab1618-f82e-4e98-8316-fc4ad702c4ee">
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 ## 🛠 Built With <a name="built-with"></a>
